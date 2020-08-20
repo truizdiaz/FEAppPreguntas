@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Modulos
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
+// Componentes
 import { AppComponent } from './app.component';
 import { InicioComponent } from './componets/inicio/inicio.component';
 import { BienvenidaComponent } from './componets/inicio/bienvenida/bienvenida.component';
@@ -18,7 +22,8 @@ import { RegisterComponent } from './componets/inicio/register/register.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

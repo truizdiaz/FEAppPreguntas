@@ -4,15 +4,15 @@
             <div class="card text-center" style="padding: 20px;">
                 <h3>Login</h3>
                 <br>
-                <form>
+                <form [formGroup]="login" (ngSubmit)=log()>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Usuario">
+                        <input type="text" class="form-control" placeholder="Usuario" formControlName="usuario">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Contraseña">
+                        <input type="text" class="form-control" placeholder="Contraseña" formControlName="password">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary mr-2 btn-login">Aceptar</button>
+                        <button class="btn btn-primary mr-2 btn-login" type="submit">Aceptar</button>
                         <button class="btn btn-secondary" routerLink="/bienvenidos">Volver</button>
                     </div>
                     <div class="form-group">
