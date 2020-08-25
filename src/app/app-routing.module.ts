@@ -4,6 +4,9 @@ import { BienvenidaComponent } from './components/inicio/bienvenida/bienvenida.c
 import { RegisterComponent } from './components/inicio/register/register.component';
 import { LoginComponent } from './components/inicio/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CuestionariosComponent } from './components/dashboard/cuestionarios/cuestionarios.component';
+import { CambiarPasswordComponent } from './components/dashboard/cambiar-password/cambiar-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -12,7 +15,11 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
     ]},
-  { path: '**', redirectTo: '/bienvenidos', pathMatch: 'full' }
+    { path: 'dashboard', component: DashboardComponent, children: [
+      { path: '', component: CuestionariosComponent },
+      { path: 'cambiarPassword', component: CambiarPasswordComponent }
+    ]},
+  { path: '**', redirectTo: '/inicio', pathMatch: 'full' }
 ];
 
 @NgModule({
