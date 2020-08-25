@@ -4,18 +4,15 @@ import { BienvenidaComponent } from './components/inicio/bienvenida/bienvenida.c
 import { RegisterComponent } from './components/inicio/register/register.component';
 import { LoginComponent } from './components/inicio/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-  {
-    path: 'inicio', component: InicioComponent, children: [
+  { path: 'inicio', component: InicioComponent, children: [
       { path: '', component: BienvenidaComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-    ]
-  },
-  { path: '**', redirectTo: '/inicio', pathMatch: 'full' }
+    ]},
+  { path: '**', redirectTo: '/bienvenidos', pathMatch: 'full' }
 ];
 
 @NgModule({
