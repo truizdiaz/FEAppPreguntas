@@ -12,8 +12,9 @@ import { BienvenidaComponent } from './components/inicio/bienvenida/bienvenida.c
 import { LoginComponent } from './components/inicio/login/login.component';
 import { RegisterComponent } from './components/inicio/register/register.component';
 import { NavbarComponent } from './components/dashboard/navbar/navbar.component';
-import { CuestionariosComponent} from './components/dashboard/cuestionarios/cuestionarios.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CambiarPasswordComponent } from './components/dashboard/cambiar-password/cambiar-password.component';
+import { CuestionariosComponent } from './components/dashboard/cuestionarios/cuestionarios.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import { CambiarPasswordComponent } from './components/dashboard/cambiar-passwor
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    CuestionariosComponent,
-    CambiarPasswordComponent
+    DashboardComponent,
+    CambiarPasswordComponent,
+    CuestionariosComponent
   ],
   imports: [
     BrowserModule,
