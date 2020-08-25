@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BienvenidaComponent } from './componets/inicio/bienvenida/bienvenida.component';
-import { RegisterComponent } from './componets/inicio/register/register.component';
-import { LoginComponent } from './componets/inicio/login/login.component';
+import { BienvenidaComponent } from './components/inicio/bienvenida/bienvenida.component';
+import { RegisterComponent } from './components/inicio/register/register.component';
+import { LoginComponent } from './components/inicio/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/bienvenidos', pathMatch: 'full' },

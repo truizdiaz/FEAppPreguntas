@@ -7,10 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // Componentes
 import { AppComponent } from './app.component';
-import { InicioComponent } from './componets/inicio/inicio.component';
-import { BienvenidaComponent } from './componets/inicio/bienvenida/bienvenida.component';
-import { LoginComponent } from './componets/inicio/login/login.component';
-import { RegisterComponent } from './componets/inicio/register/register.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { BienvenidaComponent } from './components/inicio/bienvenida/bienvenida.component';
+import { LoginComponent } from './components/inicio/login/login.component';
+import { RegisterComponent } from './components/inicio/register/register.component';
 
 @NgModule({
   declarations: [
