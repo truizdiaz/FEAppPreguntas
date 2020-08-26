@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loading = false;
   login: FormGroup;
 
   constructor(private fb: FormBuilder, 
@@ -32,14 +32,20 @@ export class LoginComponent implements OnInit {
       nombreUsuario: this.login.value.usuario,
       password: this.login.value.password
     }
+    this.loading = true;
+    setTimeout(() => {
+      if (usuario.nombreUsuario === 'truizdiaz' && usuario.password === 'admin123'){
+        this.login.reset();
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.toastr.error('Usuario o contraseña incorrecto', 'Error');
+        this.login.reset();
+      }
+      this.loading = false;
+    } , 3000);
 
-    if (usuario.nombreUsuario === 'truizdiaz' && usuario.password === 'admin123'){
-      this.login.reset();
-      this.router.navigate(['/dashboard']);
-    } else {
-      this.toastr.error('Usuario o contraseña incorrecto', 'Error');
-      this.login.reset();
-    }
+
+   
     console.log(usuario);
   }
 
