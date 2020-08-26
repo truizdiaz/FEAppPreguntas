@@ -26,4 +26,8 @@ export class CambiarPasswordComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true};
   }
 
+  guardarPassword(): void {
+    console.log(this.cambiarPassword);
+  }
+
 }
