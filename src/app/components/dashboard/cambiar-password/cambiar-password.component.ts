@@ -21,7 +21,7 @@ export class CambiarPasswordComponent implements OnInit {
   }
 
   checkPassword(group: FormGroup): any {
-    const pass = group.controls.passwordAnterior.value;
+    const pass = group.controls.nuevaPassword.value;
     const confirmPass = group.controls.confirmPassword.value;
     return pass === confirmPass ? null : { notSame: true};
   }
