@@ -27,7 +27,12 @@ export class CambiarPasswordComponent implements OnInit {
   }
 
   guardarPassword(): void {
-    console.log(this.cambiarPassword);
+
+    const changePassword: any = {
+      passwordAnterior: this.cambiarPassword.value.passwordAnterior,
+      nuevaPassword: this.cambiarPassword.value.nuevaPassword
+    };
+    console.log(changePassword);
   }
 
 }
