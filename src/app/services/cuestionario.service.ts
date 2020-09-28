@@ -3,11 +3,14 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Cuestionario } from '../models/cuestionario';
 import { Observable } from 'rxjs';
+import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CuestionarioService {
+  tituloCuestionario: string;
+  descripcionCuestionario: string;
   myAppUrl: string;
   myApiUrl: string;
 
