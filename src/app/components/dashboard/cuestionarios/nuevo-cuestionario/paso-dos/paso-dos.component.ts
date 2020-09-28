@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Pregunta } from 'src/app/models/pregunta';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
 
 @Component({
@@ -9,7 +12,11 @@ import { CuestionarioService } from 'src/app/services/cuestionario.service';
 export class PasoDosComponent implements OnInit {
   tituloCuestionario: string;
   descripcionCuestionario: string;
-  constructor(private cuestionarioService: CuestionarioService) { }
+  listPreguntas: Pregunta[] = [];
+
+  constructor(private cuestionarioService: CuestionarioService,
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.tituloCuestionario = this.cuestionarioService.tituloCuestionario;
