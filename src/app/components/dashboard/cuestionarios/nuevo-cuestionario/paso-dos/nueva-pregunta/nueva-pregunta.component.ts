@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Pregunta } from 'src/app/models/pregunta';
 
@@ -23,6 +23,19 @@ export class NuevaPreguntaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  // Devuelve FormArray de respuestas
+  get getRespuestas(): FormArray {
+    return this.nuevaPregunta.get('respuestas') as FormArray;
+  }
+
+  // Agregar respuesta al array
+  agregarRespuesta(): void {
+    this.getRespuestas.push(this.fb.group({
+      descripcion: ['', Validators.required],
+      esCorrecta: 0
+    }));
   }
 
 }
