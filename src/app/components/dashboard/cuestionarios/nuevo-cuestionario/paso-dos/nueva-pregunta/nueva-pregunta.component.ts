@@ -66,15 +66,24 @@ export class NuevaPreguntaComponent implements OnInit {
     // Creamos un array de respuestas
     const arrayRta: Respuesta[] = [];
 
-    arrayRespuestas.forEach(element => {
+    arrayRespuestas.forEach((element, index ) => {
       const respuesta: Respuesta = new Respuesta(element.descripcion, false);
-
+      if (index === element.esCorrecta){
+        respuesta.esCorrecta = true;
+      }
       arrayRta.push(respuesta);
     });
 
     const pregunta: Pregunta = new Pregunta(descripcionPregunta, arrayRta);
 
     console.log(pregunta);
+    this.reset();
+  }
+
+  reset(): void{
+    this.nuevaPregunta.reset();
+    this.getRespuestas.clear();
+    this.agregarRespuestasPorDefecto();
   }
 
 }
