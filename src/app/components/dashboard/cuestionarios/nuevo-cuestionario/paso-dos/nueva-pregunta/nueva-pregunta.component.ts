@@ -1,5 +1,5 @@
 import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Pregunta } from 'src/app/models/pregunta';
@@ -14,6 +14,8 @@ export class NuevaPreguntaComponent implements OnInit {
   nuevaPregunta: FormGroup;
   pregunta: Pregunta;
   rtaCorrecta = 0;
+  @Output() enviarPregunta = new EventEmitter<Pregunta>();
+
   constructor(private fb: FormBuilder,
               private toastr: ToastrService) {
   this.nuevaPregunta = this.fb.group({
@@ -76,7 +78,7 @@ export class NuevaPreguntaComponent implements OnInit {
 
     const pregunta: Pregunta = new Pregunta(descripcionPregunta, arrayRta);
 
-    console.log(pregunta);
+    this.enviarPregunta.emit(pregunta);
     this.reset();
   }
 

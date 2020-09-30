@@ -23,4 +23,9 @@ export class PasoDosComponent implements OnInit {
     this.descripcionCuestionario = this.cuestionarioService.descripcionCuestionario;
   }
 
+  guardarPregunta(pregunta: Pregunta): void {
+    this.listPreguntas.push(pregunta);
+    console.log(this.listPreguntas);
+  }
+
 }
