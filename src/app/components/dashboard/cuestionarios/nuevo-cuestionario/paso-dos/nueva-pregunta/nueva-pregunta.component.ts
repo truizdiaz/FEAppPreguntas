@@ -23,6 +23,7 @@ export class NuevaPreguntaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.agregarRespuestasPorDefecto();
   }
 
   // Devuelve FormArray de respuestas
@@ -36,6 +37,19 @@ export class NuevaPreguntaComponent implements OnInit {
       descripcion: ['', Validators.required],
       esCorrecta: 0
     }));
+  }
+
+  agregarRespuestasPorDefecto(): void{
+    this.agregarRespuesta();
+    this.agregarRespuesta();
+  }
+
+  eliminarRespuesta(index: number): void{
+    if (this.getRespuestas.length === 2){
+      this.toastr.error('Como minimo la pregunta debe contener 2 respuestas', 'Error!');
+    } else {
+      this.getRespuestas.removeAt(index);
+    }
   }
 
 }
