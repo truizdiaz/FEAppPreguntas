@@ -28,4 +28,8 @@ export class PasoDosComponent implements OnInit {
     console.log(this.listPreguntas);
   }
 
+  eliminarPregunta(index: number): void{
+    this.listPreguntas.splice(index, 1);
+  }
+
 }
