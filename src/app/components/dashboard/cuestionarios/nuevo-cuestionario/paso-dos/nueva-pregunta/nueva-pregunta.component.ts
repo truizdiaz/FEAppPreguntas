@@ -70,7 +70,7 @@ export class NuevaPreguntaComponent implements OnInit {
 
     arrayRespuestas.forEach((element, index ) => {
       const respuesta: Respuesta = new Respuesta(element.descripcion, false);
-      if (index === element.esCorrecta){
+      if (index === this.rtaCorrecta){
         respuesta.esCorrecta = true;
       }
       arrayRta.push(respuesta);
