@@ -30,4 +30,8 @@ export class CuestionarioService {
   deleteCuestionario(idCuestionario: number): Observable<any> {
     return this.http.delete(this.myAppUrl + this.myApiUrl + idCuestionario);
   }
+
+  getCuestionario(idCuestionario: number): Observable<any>{
+    return this.http.get(this.myAppUrl + this.myApiUrl + idCuestionario);
+  }
 }
