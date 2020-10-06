@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class CuestionariosComponent implements OnInit {
   nombreUsuario: string;
   listCuestionarios: Cuestionario[] = [];
+  loading = false;
 
   constructor(private loginService: LoginService,
               private cuestionarioService: CuestionarioService,
@@ -28,11 +29,13 @@ export class CuestionariosComponent implements OnInit {
   }
 
   getCuestionarios(): void {
+    this.loading = true;
     this.cuestionarioService.getListCuestionario().subscribe(data => {
-      console.log(data);
       this.listCuestionarios = data;
+      this.loading = false;
     }, error => {
       console.log(error);
+      this.loading = false;
     });
   }
 
