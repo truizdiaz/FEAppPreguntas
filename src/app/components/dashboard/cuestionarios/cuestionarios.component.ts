@@ -36,7 +36,22 @@ export class CuestionariosComponent implements OnInit {
     }, error => {
       console.log(error);
       this.loading = false;
+      this.toastr.error('Opss.. ocurrio un error', 'Error');
     });
+  }
+
+  eliminarCuestionario(idCuestionario: number): void {
+    if (confirm('Esta seguro que desea eliminar el cuestionario?')){
+      this.loading = true;
+      this.cuestionarioService.deleteCuestionario(idCuestionario).subscribe(data =>{
+        this.loading = false;
+        this.toastr.success('El cuestionario fue eliminado con exito!', 'Registro eliminado');
+        this.getCuestionarios();
+      }, error => {
+        this.loading = false;
+        this.toastr.error('Opss.. ocurrio un error', 'Error');
+      });
+    }
   }
 
 }

@@ -18,7 +18,7 @@
             <h4 class="card-title">{{ cuestionario.nombre }}</h4>
             <p class="card-text">{{ cuestionario.descripcion }}</p>
             <button class="btn btn-success radius">VER</button>
-            <button class="btn btn-danger radius">ELIMINAR</button>
+            <button class="btn btn-danger radius" (click)="eliminarCuestionario(cuestionario.id)">ELIMINAR</button>
         </div>
     </div> 
 </div>

@@ -26,4 +26,8 @@ export class CuestionarioService {
   getListCuestionario(): Observable<any>{
     return this.http.get(this.myAppUrl + this.myApiUrl + 'GetListCuestionarioByUser');
   }
+
+  deleteCuestionario(idCuestionario: number): Observable<any> {
+    return this.http.delete(this.myAppUrl + this.myApiUrl + idCuestionario);
+  }
 }
