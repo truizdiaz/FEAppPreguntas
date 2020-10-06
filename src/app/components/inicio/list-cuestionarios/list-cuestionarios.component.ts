@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CuestionarioService } from 'src/app/services/cuestionario.service';
 
 @Component({
   selector: 'app-list-cuestionarios',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListCuestionariosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cuestionarioService: CuestionarioService) { }
 
   ngOnInit(): void {
+    this.getListCuestionarios();
+  }
+
+  getListCuestionarios(): void {
+    this.cuestionarioService.getListCuestionarios().subscribe(data => {
+      console.log(data);
+    });
   }
 
 }
