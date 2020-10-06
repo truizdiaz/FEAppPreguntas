@@ -9,6 +9,9 @@ import { CuestionarioService } from 'src/app/services/cuestionario.service';
 })
 export class CuestionarioComponent implements OnInit {
   idCuestionario: number;
+  loading = false;
+  cuestionario: any = {};
+
   constructor(private cuestionarioService: CuestionarioService,
               private aRoute: ActivatedRoute) {
                 this.idCuestionario = +this.aRoute.snapshot.paramMap.get('id');
@@ -19,7 +22,10 @@ export class CuestionarioComponent implements OnInit {
   }
 
   getCuestionario(): void {
+    this.loading = true;
     this.cuestionarioService.getCuestionario(this.idCuestionario).subscribe(data => {
+      this.loading = false;
+      this.cuestionario = data;
       console.log(data);
     });
   }
