@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
 import { RespuestaCuestionarioService } from 'src/app/services/respuesta-cuestionario.service';
 
@@ -11,10 +12,15 @@ export class PreguntaComponent implements OnInit {
   idCuestionario: number;
 
   constructor(private respuestaCuestionarioService: RespuestaCuestionarioService,
-              private cuestionarioService: CuestionarioService) { }
+              private cuestionarioService: CuestionarioService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.idCuestionario = this.respuestaCuestionarioService.idCuestionario;
+    if (this.idCuestionario == null){
+      this.router.navigate(['/inicio']);
+      return;
+    }
     this.getCuestionario();
   }
 
