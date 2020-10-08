@@ -12,7 +12,8 @@ import { RespuestaCuestionarioService } from 'src/app/services/respuesta-cuestio
 export class PreguntaComponent implements OnInit {
   idCuestionario: number;
   listPreguntas: Pregunta[] = [];
-
+  loading = false;
+  rtaConfirmada = false;
   constructor(private respuestaCuestionarioService: RespuestaCuestionarioService,
               private cuestionarioService: CuestionarioService,
               private router: Router) { }
@@ -27,9 +28,11 @@ export class PreguntaComponent implements OnInit {
   }
 
   getCuestionario(): void {
+    this.loading = true;
     this.cuestionarioService.getCuestionario(this.idCuestionario).subscribe(data =>{
       console.log(data);
       this.listPreguntas = data.listPreguntas;
+      this.loading = false;
     });
   }
 
