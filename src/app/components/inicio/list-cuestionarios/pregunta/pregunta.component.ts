@@ -14,6 +14,9 @@ export class PreguntaComponent implements OnInit {
   listPreguntas: Pregunta[] = [];
   loading = false;
   rtaConfirmada = false;
+  opcionSeleccionada: any;
+  index = 0;
+
   constructor(private respuestaCuestionarioService: RespuestaCuestionarioService,
               private cuestionarioService: CuestionarioService,
               private router: Router) { }
@@ -37,11 +40,27 @@ export class PreguntaComponent implements OnInit {
   }
 
   obtenerPregunta(): string {
-    return this.listPreguntas[0].descripcion;
+    return this.listPreguntas[this.index].descripcion;
   }
 
   getIndex(): number {
-    return 0;
+    return this.index;
+  }
+
+  respuestaSeleccionada(respuesta: any): void{
+    this.opcionSeleccionada = respuesta;
+    this.rtaConfirmada = true;
+  }
+
+  AddClassOption(respuesta: any): string {
+    if (respuesta === this.opcionSeleccionada){
+      return 'active text-light';
+    }
+  }
+
+  siguiente(): void {
+    this.rtaConfirmada = false;
+    this.index++;
   }
 
 
