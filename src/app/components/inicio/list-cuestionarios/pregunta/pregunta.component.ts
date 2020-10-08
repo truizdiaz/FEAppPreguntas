@@ -16,6 +16,7 @@ export class PreguntaComponent implements OnInit {
   rtaConfirmada = false;
   opcionSeleccionada: any;
   index = 0;
+  idRespuestaSeleccionada: number;
 
   constructor(private respuestaCuestionarioService: RespuestaCuestionarioService,
               private cuestionarioService: CuestionarioService,
@@ -28,14 +29,15 @@ export class PreguntaComponent implements OnInit {
       return;
     }
     this.getCuestionario();
+    this.respuestaCuestionarioService.respuestas = [];
   }
 
   getCuestionario(): void {
     this.loading = true;
     this.cuestionarioService.getCuestionario(this.idCuestionario).subscribe(data =>{
-      console.log(data);
       this.listPreguntas = data.listPreguntas;
       this.loading = false;
+      this.respuestaCuestionarioService.cuestionario = data;
     });
   }
 
@@ -47,9 +49,10 @@ export class PreguntaComponent implements OnInit {
     return this.index;
   }
 
-  respuestaSeleccionada(respuesta: any): void{
+  respuestaSeleccionada(respuesta: any, idRespuesta: number): void{
     this.opcionSeleccionada = respuesta;
     this.rtaConfirmada = true;
+    this.idRespuestaSeleccionada = idRespuesta;
   }
 
   AddClassOption(respuesta: any): string {
@@ -59,8 +62,11 @@ export class PreguntaComponent implements OnInit {
   }
 
   siguiente(): void {
+    this.respuestaCuestionarioService.respuestas.push(this.idRespuestaSeleccionada);
+
     this.rtaConfirmada = false;
     this.index++;
+    this.idRespuestaSeleccionada = null;
 
     if (this.index === this.listPreguntas.length) {
       this.router.navigate(['/inicio/respuestaCuestionario']);
