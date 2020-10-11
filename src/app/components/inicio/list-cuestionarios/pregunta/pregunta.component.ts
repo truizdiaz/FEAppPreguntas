@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pregunta } from 'src/app/models/pregunta';
+import { RespuestaCuestionario } from 'src/app/models/respuestaCuestionario';
+import { RespuestaCuestionarioDetalle } from 'src/app/models/respuestaCuestionarioDetalle';
 import { CuestionarioService } from 'src/app/services/cuestionario.service';
 import { RespuestaCuestionarioService } from 'src/app/services/respuesta-cuestionario.service';
 
@@ -17,6 +19,8 @@ export class PreguntaComponent implements OnInit {
   opcionSeleccionada: any;
   index = 0;
   idRespuestaSeleccionada: number;
+
+  listRespuestaDetalle: RespuestaCuestionarioDetalle[] = [];
 
   constructor(private respuestaCuestionarioService: RespuestaCuestionarioService,
               private cuestionarioService: CuestionarioService,
@@ -64,13 +68,38 @@ export class PreguntaComponent implements OnInit {
   siguiente(): void {
     this.respuestaCuestionarioService.respuestas.push(this.idRespuestaSeleccionada);
 
+    // Creamos un objeto RespuestaDetalle 
+    const detalleRespuesta: RespuestaCuestionarioDetalle = {
+      respuestaId: this.idRespuestaSeleccionada
+    };
+
+    // Agregamos objeto al array
+    this.listRespuestaDetalle.push(detalleRespuesta);   
+
+    if (this.index === this.listPreguntas.length - 1) {
+     /*  this.router.navigate(['/inicio/respuestaCuestionario']); */
+     this.guardarRespuestaCuestionario();
+    }
+
     this.rtaConfirmada = false;
     this.index++;
     this.idRespuestaSeleccionada = null;
+  }
 
-    if (this.index === this.listPreguntas.length) {
+  guardarRespuestaCuestionario(): void {
+    const rtaCuestionario: RespuestaCuestionario = {
+      cuestionarioId: this.respuestaCuestionarioService.idCuestionario,
+      nombreParticipante: this.respuestaCuestionarioService.nombreParticiante,
+      listRtaCuestionarioDetalle: this.listRespuestaDetalle
+    };
+    this.loading = true;
+    this.respuestaCuestionarioService.guardarRespuestaCuestionario(rtaCuestionario).subscribe(data => {
+      this.loading = false;
       this.router.navigate(['/inicio/respuestaCuestionario']);
-    }
+    }, error => {
+      this.loading = false;
+      console.log(error);
+    });
   }
 
 
