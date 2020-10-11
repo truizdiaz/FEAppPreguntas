@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RespuestaCuestionario } from 'src/app/models/respuestaCuestionario';
 import { RespuestaCuestionarioService } from 'src/app/services/respuesta-cuestionario.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { RespuestaCuestionarioService } from 'src/app/services/respuesta-cuestio
 })
 export class EstadisticasComponent implements OnInit {
   idCuestionario: number;
+  loading = false;
+  listRespuestaCuestionario: RespuestaCuestionario[] = [];
 
   constructor(private aRoute: ActivatedRoute,
               private respuestaCuestionarioService: RespuestaCuestionarioService ) {
@@ -20,7 +23,10 @@ export class EstadisticasComponent implements OnInit {
   }
 
   getListCuestionarioService(): void {
+    this.loading = true;
     this.respuestaCuestionarioService.getListCuestionarioRespuesta(this.idCuestionario).subscribe(data =>{
+      this.loading = false;
+      this.listRespuestaCuestionario = data;
       console.log(data);
     });
   }
