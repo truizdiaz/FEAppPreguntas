@@ -32,6 +32,7 @@ import { ListCuestionariosComponent } from './components/inicio/list-cuestionari
 import { IngresarNombreComponent } from './components/inicio/list-cuestionarios/ingresar-nombre/ingresar-nombre.component';
 import { PreguntaComponent } from './components/inicio/list-cuestionarios/pregunta/pregunta.component';
 import { RespuestaCuestionarioComponent } from './components/inicio/list-cuestionarios/respuesta-cuestionario/respuesta-cuestionario.component';
+import { EstadisticasComponent } from './components/dashboard/cuestionarios/estadisticas/estadisticas.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { RespuestaCuestionarioComponent } from './components/inicio/list-cuestio
     IngresarNombreComponent,
     PreguntaComponent,
     RespuestaCuestionarioComponent,
+    EstadisticasComponent
   ],
   imports: [
     BrowserModule,
