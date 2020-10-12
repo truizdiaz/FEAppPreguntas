@@ -30,6 +30,7 @@ export class DetalleRespuestaComponent implements OnInit {
      this.cuestionario = data.cuestionario;
      this.respuestas = data.respuestas;
      this.loading = false;
+     console.log(data);
     });
   }
 
