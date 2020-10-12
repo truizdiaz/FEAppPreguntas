@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Cuestionario } from 'src/app/models/cuestionario';
+import { RespuestaCuestionarioDetalle } from 'src/app/models/respuestaCuestionarioDetalle';
+import { RespuestaCuestionarioService } from 'src/app/services/respuesta-cuestionario.service';
 
 @Component({
   selector: 'app-detalle-respuesta',
@@ -6,10 +10,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detalle-respuesta.component.css']
 })
 export class DetalleRespuestaComponent implements OnInit {
+  idRespuesta: number;
+  loading = false;
+  cuestionario: Cuestionario;
+  respuestas: RespuestaCuestionarioDetalle[] = [];
 
-  constructor() { }
+  constructor(private aRoute: ActivatedRoute,
+              private respuestaCuestionarioService: RespuestaCuestionarioService) { 
+                this.idRespuesta = +this.aRoute.snapshot.paramMap.get('id');
+  }
 
   ngOnInit(): void {
+    this.getListRespuestasYCuestionario();
+  }
+
+  getListRespuestasYCuestionario(): void{
+    this.respuestaCuestionarioService.getCuestionarioByIdRespuesta(this.idRespuesta).subscribe(data =>{
+      console.log(data);
+    });
   }
 
 }
