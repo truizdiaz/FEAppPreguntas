@@ -19,7 +19,6 @@ export class CuestionariosComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.getNombreUsuario();
     this.getCuestionarios();
   }
 
@@ -31,6 +30,7 @@ export class CuestionariosComponent implements OnInit {
   getCuestionarios(): void {
     this.loading = true;
     this.cuestionarioService.getListCuestionarioByUser().subscribe(data => {
+      this.getNombreUsuario();
       this.listCuestionarios = data;
       this.loading = false;
     }, error => {

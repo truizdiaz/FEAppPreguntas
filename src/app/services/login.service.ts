@@ -37,4 +37,8 @@ export class LoginService {
   removeLocalStorge(): void {
     localStorage.removeItem('token');
   }
+
+  getToken(): string {
+    return localStorage.getItem('token');
+  }
 }
