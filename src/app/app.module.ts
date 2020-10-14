@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 
 // Modulos
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 // Interceptors
 import { AddTokenInterceptor } from '../app/helpers/add-token.interceptor';
@@ -22,7 +21,6 @@ import { NavbarComponent } from './components/dashboard/navbar/navbar.component'
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CambiarPasswordComponent } from './components/dashboard/cambiar-password/cambiar-password.component';
 import { CuestionariosComponent } from './components/dashboard/cuestionarios/cuestionarios.component';
-import { LoadingComponent } from './shared/loading/loading.component';
 import { NuevoCuestionarioComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/nuevo-cuestionario.component';
 import { PasoUnoComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/paso-uno/paso-uno.component';
 import { PasoDosComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/paso-dos/paso-dos.component';
@@ -46,7 +44,6 @@ import { DetalleRespuestaComponent } from './components/dashboard/cuestionarios/
     DashboardComponent,
     CambiarPasswordComponent,
     CuestionariosComponent,
-    LoadingComponent,
     NuevoCuestionarioComponent,
     PasoUnoComponent,
     PasoDosComponent,
@@ -62,11 +59,10 @@ import { DetalleRespuestaComponent } from './components/dashboard/cuestionarios/
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule,
-    FormsModule
+    SharedModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
