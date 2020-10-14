@@ -40,9 +40,7 @@ import { ListCuestionariosComponent } from './components/inicio/list-cuestionari
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule,
-    SharedModule,
-    ListCuestionariosModule,
-    DashboardModule
+    SharedModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
