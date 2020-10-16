@@ -27,8 +27,7 @@ const routes: Routes = [
       { path: '', component: BienvenidaComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'listCuestionarios', component: ListCuestionariosComponent,
-                                  loadChildren: () => import('./components/inicio/list-cuestionarios/list-cuestionarios.module')
+      { path: 'listCuestionarios', loadChildren: () => import('./components/inicio/list-cuestionarios/list-cuestionarios.module')
                                                   .then(x => x.ListCuestionariosModule) },
 
     ]},

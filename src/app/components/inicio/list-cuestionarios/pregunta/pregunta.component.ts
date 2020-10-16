@@ -95,7 +95,7 @@ export class PreguntaComponent implements OnInit {
     this.loading = true;
     this.respuestaCuestionarioService.guardarRespuestaCuestionario(rtaCuestionario).subscribe(data => {
       this.loading = false;
-      this.router.navigate(['/inicio/respuestaCuestionario']);
+      this.router.navigate(['/inicio/listCuestionarios/respuestaCuestionario']);
     }, error => {
       this.loading = false;
       console.log(error);
